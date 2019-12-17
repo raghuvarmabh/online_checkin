@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "checkins")
 public class Checkin {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @NotBlank(message = "Name is required")
@@ -29,8 +29,6 @@ public class Checkin {
   @Size(max = 10, message = "Phone number should be 10 numbers")
   @Size(min = 10, message = "Phone number should be 10 numbers")
   private String phone_number;
-
-  private LocalDateTime currentDateTime = LocalDateTime.now();
 
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime checkedInAt = LocalDateTime.now();
