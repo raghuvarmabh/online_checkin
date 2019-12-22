@@ -10,8 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
@@ -19,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name="checkins")
 public class Checkin {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   
   @NotBlank(message = "Name is required")
@@ -31,15 +29,24 @@ public class Checkin {
   @Size(min = 10, message= "Phone number should be 10 numbers")
   private String phone_number;
   
-  private LocalDateTime currentDateTime = LocalDateTime.now(); 
-  
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime checkedInAt = LocalDateTime.now();
 
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updatedAt = LocalDateTime.now();
   
-  public Long getId() {
+  private String state = "open";
+  
+  
+  
+  public Checkin(@NotBlank(message = "Name is required") @Size(max = 50) String name,
+		@NotBlank(message = "Phone number is required") @Size(max = 10, message = "Phone number should be 10 numbers") @Size(min = 10, message = "Phone number should be 10 numbers") String phone_number) {
+	super();
+	this.name = name;
+	this.phone_number = phone_number;
+}
+
+public Long getId() {
 	return id;
 }
 
