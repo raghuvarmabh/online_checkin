@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Checkin {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private int id;
   
   @NotBlank(message = "Name is required")
   @Size(max = 50)
@@ -46,11 +46,11 @@ public class Checkin {
 	this.phone_number = phone_number;
 }
 
-public Long getId() {
+public int getId() {
 	return id;
 }
 
-public void setId(Long id) {
+public void setId(int id) {
 	this.id = id;
 }
 
