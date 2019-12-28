@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CheckinsRepository extends CrudRepository<Checkin, Long>{	
+public interface CheckinsRepository extends CrudRepository<Checkin, Integer>{	
 	@Query("select c FROM Checkin c where c.state = 'open'")
 	List<Checkin> retrieveActiveCheckins(LocalDate checkedInDate);
 }

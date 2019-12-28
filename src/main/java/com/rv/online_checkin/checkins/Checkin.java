@@ -37,7 +37,10 @@ public class Checkin {
   
   private String state = "open";
   
-  
+  public Checkin() {
+	  
+  }
+ 
   
   public Checkin(@NotBlank(message = "Name is required") @Size(max = 50) String name,
 		@NotBlank(message = "Phone number is required") @Size(max = 10, message = "Phone number should be 10 numbers") @Size(min = 10, message = "Phone number should be 10 numbers") String phone_number) {
